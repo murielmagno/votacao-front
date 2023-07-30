@@ -1,0 +1,16 @@
+.home-container {
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: 240px;
+}
+
+main {
+  padding: 20px;
+}
+
+.active-link {
+  color: #1976d2;
+  font-weight: bold;
+}

@@ -6,8 +6,8 @@
     <mat-card-content>
       <form (ngSubmit)="onLogin(loginForm)">
         <mat-form-field appearance="fill">
-          <mat-label>Nome de usuário ou e-mail</mat-label>
-          <input matInput required name="usernameOrEmail" [(ngModel)]="loginForm.nomeDoUsuario">
+          <mat-label>Usuário</mat-label>
+          <input matInput required name="username" [(ngModel)]="loginForm.nomeDoUsuario">
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Senha</mat-label>
