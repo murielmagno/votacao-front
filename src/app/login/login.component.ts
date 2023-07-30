@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AuthService} from "../auth.service";
 import {ModalErrorComponent} from "../modal-error/modal-error.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 interface LoginForm {
   nomeDoUsuario: string;
@@ -16,16 +17,14 @@ interface LoginForm {
 export class LoginComponent {
   loginForm: LoginForm = { nomeDoUsuario: '', senha: '' };
 
-  constructor(private authService: AuthService, private dialog: MatDialog) {}
+  constructor(private authService: AuthService, private dialog: MatDialog, private router: Router) {}
 
   onLogin(form: LoginForm): void {
     this.authService.login(form.nomeDoUsuario, form.senha).subscribe(
       (response) => {
-        // Lógica para manipular a resposta da API em caso de sucesso
-        console.log('Login bem-sucedido!', response);
+        this.router.navigate(['/home']).then(r => console.log(r));
       },
       (error) => {
-        console.log(error)
         this.openErrorDialog(error.error);
       }
     );
