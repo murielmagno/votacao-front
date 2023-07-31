@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AuthService} from "../auth.service";
+import {AuthService} from "../utils/auth.service";
 import {Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
 
@@ -18,7 +18,6 @@ export class HomeComponent {
 
   onLogout(): void {
     this.authService.logout();
-    this.sidenav.close();
     this.router.navigate(['/login']);
   }
 

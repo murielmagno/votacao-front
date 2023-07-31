@@ -18,6 +18,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {AppRoutingModule} from "./app-routing.module";
+import {AuthGuard} from "./utils/AuthGuard";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import {AppRoutingModule} from "./app-routing.module";
     MatToolbarModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
