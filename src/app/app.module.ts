@@ -19,13 +19,15 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthGuard} from "./utils/AuthGuard";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ModalErrorComponent
+    ModalErrorComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

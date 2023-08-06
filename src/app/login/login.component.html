@@ -13,8 +13,13 @@
           <mat-label>Senha</mat-label>
           <input matInput type="password" required name="password" [(ngModel)]="loginForm.senha">
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Entrar</button>
+        <div class="button-login">
+          <button mat-raised-button color="primary" type="submit">Entrar</button>
+        </div>
       </form>
     </mat-card-content>
+    <div class="button-cadastro">
+      <button mat-button routerLink="/register">Cadastrar</button>
+    </div>
   </mat-card>
 </div>
