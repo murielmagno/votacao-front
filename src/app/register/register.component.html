@@ -1,0 +1,39 @@
+<div class="register-container" xmlns="http://www.w3.org/1999/html">
+  <mat-card>
+    <mat-error *ngIf="cadastroForm.cpf.length !== 11 && cadastroForm.cpf.length > 0">O CPF deve ter exatamente 11 dígitos.</mat-error>
+    <mat-card-header>
+      <mat-card-title>Registro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field>
+          <mat-label>Nome de usuário</mat-label>
+          <input matInput type="text" [(ngModel)]="cadastroForm.nomeDoUsuario" name="username" required>
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input matInput inputmode="numeric" [(ngModel)]="cadastroForm.cpf" name="cpf" required
+               (keydown)="onCpfKeydown($event)" maxlength="11">
+        <mat-icon matSuffix>assignment</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="cadastroForm.senha" name="password" required>
+          <mat-icon matSuffix
+                    (click)="togglePasswordVisibility()">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          <mat-error *ngIf="!isSenhaValid()">A senha deve ser maior ou igual a 8 dígitos.</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <div class="button-cadastro">
+      <button class="button-cadastro" mat-raised-button color="primary" [disabled]="!isFormValid() && !isSenhaValid()" (click)="onRegister(cadastroForm)">Registrar</button>
+    </div>
+
+    <div class="button-login">
+      <button mat-button routerLink="/login">Voltar para o login</button>
+    </div>
+  </mat-card>
+</div>
