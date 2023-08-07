@@ -1,0 +1,8 @@
+<mat-list>
+  <h3 mat-subheader>Votações</h3>
+  <mat-list-item *ngFor="let votation of votations">
+    <mat-icon mat-list-icon>how_to_vote</mat-icon>
+    <h4 mat-line>{{ votation.title }}</h4>
+    <p mat-line>{{ votation.description }}</p>
+  </mat-list-item>
+</mat-list>

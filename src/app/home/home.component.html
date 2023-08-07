@@ -18,11 +18,16 @@
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Título do Aplicativo</span>
+      <span>Vote aqui</span>
     </mat-toolbar>
-
     <div class="main-content">
       <p>Bem-vindo, {{ username }}!</p>
+
+      <div class="votation-container">
+        <app-votations-list></app-votations-list>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<app-votations-list></app-votations-list>
