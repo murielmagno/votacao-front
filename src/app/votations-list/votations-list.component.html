@@ -1,0 +1,30 @@
+<mat-table [dataSource]="votationsPage.content">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let votation">{{ votation.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="descricao">
+    <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+    <mat-cell *matCellDef="let votation">{{ votation.pauta.descricao }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="inicioVotacao">
+    <mat-header-cell *matHeaderCellDef>Inicio Votação</mat-header-cell>
+    <mat-cell *matCellDef="let votation">{{ votation.inicioVotacao }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="fimVotacao">
+    <mat-header-cell *matHeaderCellDef>Fim Votação</mat-header-cell>
+    <mat-cell *matCellDef="let votation">{{ votation.fimVotacao }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="statusVotacao">
+    <mat-header-cell *matHeaderCellDef>Status Votação</mat-header-cell>
+    <mat-cell *matCellDef="let votation">{{ votation.statusVotacao }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
