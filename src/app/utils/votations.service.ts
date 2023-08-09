@@ -17,4 +17,8 @@ export class VotationsService {
   getVotations(): Observable<Page<Votation>> {
     return this.http.get<Page<Votation>>(`${this.apiUrl}/votacao`);
   }
+
+  getVotation(id: number): Observable<Votation> {
+    return this.http.get<Votation>(`${this.apiUrl}/votacao/${id}`);
+  }
 }

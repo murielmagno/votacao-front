@@ -26,5 +26,9 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row
+    *matRowDef="let votation; columns: displayedColumns"
+    (click)="onRowClick(votation.id)"
+    style="cursor: pointer"
+  ></mat-row>
 </mat-table>

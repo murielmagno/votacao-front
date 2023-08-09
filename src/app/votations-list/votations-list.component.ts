@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VotationsService} from "../utils/votations.service";
 // @ts-ignore
 import {Page} from "../utils/page";
+import {Router} from "@angular/router";
 
 export interface Votation {
   id: number;
@@ -46,7 +47,7 @@ export class VotationsListComponent implements OnInit{
     empty: true
   };
 
-  constructor(private votationsService: VotationsService) {
+  constructor(private votationsService: VotationsService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -64,4 +65,9 @@ export class VotationsListComponent implements OnInit{
       }
     );
   }
+
+  onRowClick(votationId: number): void {
+    this.router.navigate(['/votations', votationId]); // Navegar para a tela de votação com o ID da votação
+  }
+
 }
