@@ -24,6 +24,7 @@ export class LoginComponent {
       const response = await this.authService.login(form.nomeDoUsuario, form.senha).toPromise();
       if (response.autenticado) {
         this.router.navigate(['/home']).then(() => console.log('Redirecionado para a tela de home'));
+        console.log(response)
       } else if (!response.autenticado) {
         this.openErrorDialog(response.mensagem);
       }
