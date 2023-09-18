@@ -26,6 +26,7 @@ export class RegisterComponent {
     try {
       const response = await this.cadastroService.cadastrar(form.nomeDoUsuario, form.cpf, form.senha).toPromise()
       if (response.mensagem === 'Usuário cadastrado com sucesso.') {
+        this.openErrorDialog(response.mensagem);
         this.router.navigate(['/login']).then(() => console.log('Redirecionado para a tela de login'));
       } else {
         this.openErrorDialog(response.mensagem);

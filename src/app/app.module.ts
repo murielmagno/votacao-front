@@ -22,6 +22,7 @@ import {AuthGuard} from "./utils/AuthGuard";
 import { RegisterComponent } from './register/register.component';
 import { VotationsListComponent } from './votations-list/votations-list.component';
 import {VotationsModule} from "./votations/votations.module";
+import { VotationDetailComponent } from './votation-detail/votation-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {VotationsModule} from "./votations/votations.module";
     HomeComponent,
     LoginComponent,
     ModalErrorComponent,
-    RegisterComponent
+    RegisterComponent,
+    VotationDetailComponent
   ],
   imports: [
     BrowserModule,

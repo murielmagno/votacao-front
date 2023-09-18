@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {catchError, Observable, tap} from "rxjs";
 import {Votation} from "../votations-list/votations-list.component";
 // @ts-ignore
 import {Page} from "../utils/page";
@@ -16,5 +16,26 @@ export class VotationsService {
 
   getVotations(): Observable<Page<Votation>> {
     return this.http.get<Page<Votation>>(`${this.apiUrl}/votacao`);
+  }
+
+  getVotation(id: number): Observable<Votation> {
+    return this.http.get<Votation>(`${this.apiUrl}/votacao/${id}`);
+  }
+
+  setVoto(votacao: number, cpf: string, voto: string): Observable<any> {
+    const requestBody = {
+      votacao,
+      cpf,
+      voto
+    };
+    console.log('Request', requestBody);
+    return this.http.post<any>(`${this.apiUrl}/votacao/votar`, requestBody).pipe(
+      tap(response => {
+        console.log(response);
+      }),
+      catchError(error => {
+        return error.error;
+      })
+    );
   }
 }

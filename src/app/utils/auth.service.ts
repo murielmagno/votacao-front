@@ -22,6 +22,8 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/autenticacao/login`, requestBody).pipe(
       tap(response => {
         this._isAuthenticated = true;
+        localStorage.setItem('cpf', response.cpf);
+        localStorage.setItem('nome', response.nomeDoUsuario);
         this.loggedInUser = {
           username: response.nomeDoUsuario,
         };
