@@ -20,7 +20,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthGuard} from "./utils/AuthGuard";
 import { RegisterComponent } from './register/register.component';
-import { VotationsListComponent } from './votations-list/votations-list.component';
 import {VotationsModule} from "./votations/votations.module";
 import { VotationDetailComponent } from './votation-detail/votation-detail.component';
 
@@ -31,7 +30,7 @@ import { VotationDetailComponent } from './votation-detail/votation-detail.compo
     LoginComponent,
     ModalErrorComponent,
     RegisterComponent,
-    VotationDetailComponent
+    VotationDetailComponent,
   ],
   imports: [
     BrowserModule,
