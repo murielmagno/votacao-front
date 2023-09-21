@@ -3,6 +3,8 @@ import {VotationsService} from "../utils/votations.service";
 // @ts-ignore
 import {Page} from "../utils/page";
 import {Router} from "@angular/router";
+import {VotationDetailComponent} from "../votation-detail/votation-detail.component";
+import {MatDialog} from "@angular/material/dialog";
 
 export interface Votation {
   id: number;
@@ -47,7 +49,7 @@ export class VotationsListComponent implements OnInit{
     empty: true
   };
 
-  constructor(private votationsService: VotationsService, private router: Router) {
+  constructor(private votationsService: VotationsService, private router: Router, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -58,7 +60,6 @@ export class VotationsListComponent implements OnInit{
     this.votationsService.getVotations().subscribe(
       (data: Page<Votation>) => {
         this.votationsPage  = data;
-        console.log(data)
       },
       (error) => {
         console.log('Erro ao obter as votações:', error);
@@ -66,8 +67,12 @@ export class VotationsListComponent implements OnInit{
     );
   }
 
-  onRowClick(votationId: number): void {
-    this.router.navigate(['/votations', votationId]); // Navegar para a tela de votação com o ID da votação
+  onRowClick(votationId: string): void {
+    console.log(votationId);
+    localStorage.setItem('votationId', votationId);
+    this.dialog.open(VotationDetailComponent, {
+      data: { votationId: votationId },
+    });
   }
 
 }

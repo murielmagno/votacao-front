@@ -11,33 +11,45 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./votation-detail.component.css']
 })
 export class VotationDetailComponent implements OnInit {
-  votationId: number = 0;
+  votationId: string = localStorage.getItem('votationId') ?? '0';
   cpf: string = localStorage.getItem('cpf') ?? '00000000000';
-  constructor(private votationsService: VotationsService, private route: ActivatedRoute, private dialog: MatDialog) {
+  votacaoDetalhe: Votation | undefined;
+
+  constructor(
+    private votationsService: VotationsService,
+    private route: ActivatedRoute,
+    private dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.votationId = +params['id'];
-      this.votationsService.getVotation(this.votationId).subscribe(
-        (data: Votation) => {
-          console.log(data)
-        },
-        (error) => {
-          console.log('Erro ao obter as votações:', error);
-        }
-      );
+    console.log(this.votationId,'111');
+    this.route.params.subscribe(() => {
+      this.getVotationDetails();
     });
+  }
+
+  getVotationDetails(): void {
+    console.log(this.votationId,'asdas');
+    this.votationsService.getVotation(Number(this.votationId)).subscribe(
+      (data: Votation) => {
+        this.votacaoDetalhe = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log('Erro ao obter os detalhes da votação:', error);
+      }
+    );
   }
 
   vote(action: 'SIM' | 'NÃO'): void {
     console.log(`Votou ${action} na votação com ID ${this.votationId} e CPF ${this.cpf}`);
-    this.votationsService.setVoto(this.votationId, this.cpf , action).subscribe(
+    this.votationsService.setVoto(Number(this.votationId), this.cpf, action).subscribe(
       (response: any) => {
         this.openErrorDialog(response.mensagem);
       },
       (error) => {
-        console.log('Erro ao obter as votações:', error);
+        console.log('Erro ao votar:', error);
       }
     );
   }
