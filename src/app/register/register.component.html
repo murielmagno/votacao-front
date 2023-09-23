@@ -7,13 +7,19 @@
     <mat-card-content>
       <form>
         <mat-form-field>
-          <mat-label>Nome de usuário</mat-label>
+          <mat-label>Nome completo: </mat-label>
           <input matInput type="text" [(ngModel)]="cadastroForm.nomeDoUsuario" name="username" required>
           <mat-icon matSuffix>account_circle</mat-icon>
         </mat-form-field>
 
         <mat-form-field>
-        <mat-label>CPF</mat-label>
+          <mat-label>Email: </mat-label>
+          <input matInput type="email" [(ngModel)]="cadastroForm.email" name="email" required>
+          <mat-icon matSuffix>alternate_email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+        <mat-label>CPF: </mat-label>
         <input matInput inputmode="numeric" [(ngModel)]="cadastroForm.cpf" name="cpf" required
                (keydown)="onCpfKeydown($event)" maxlength="11">
         <mat-icon matSuffix>assignment</mat-icon>
