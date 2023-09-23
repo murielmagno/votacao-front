@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 
 interface CadastroForm {
   nomeDoUsuario: string;
+  email: string;
   cpf: string;
   senha: string;
 }
@@ -16,7 +17,7 @@ interface CadastroForm {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  cadastroForm: CadastroForm = {nomeDoUsuario: '', cpf: '', senha: ''};
+  cadastroForm: CadastroForm = {nomeDoUsuario: '', email: '' ,cpf: '', senha: ''};
   hidePassword: boolean = true;
 
   constructor(private cadastroService: CadastroService, private router: Router, private dialog: MatDialog) {
@@ -24,7 +25,8 @@ export class RegisterComponent {
 
   async onRegister(form: CadastroForm): Promise<void> {
     try {
-      const response = await this.cadastroService.cadastrar(form.nomeDoUsuario, form.cpf, form.senha).toPromise()
+      console.log(form)
+      const response = await this.cadastroService.cadastrar(form.nomeDoUsuario,form.email, form.cpf, form.senha).toPromise()
       if (response.mensagem === 'Usuário cadastrado com sucesso.') {
         this.openErrorDialog(response.mensagem);
         this.router.navigate(['/login']).then(() => console.log('Redirecionado para a tela de login'));

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {catchError, Observable, of, tap} from 'rxjs';
+import {catchError, Observable, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,10 @@ export class CadastroService {
   constructor(private http: HttpClient) {
   }
 
-  cadastrar(nomeDoUsuario: string, cpf: string, senha: string): Observable<any> {
+  cadastrar(nomeDoUsuario: string, email: string, cpf: string, senha: string): Observable<any> {
     const requestBody = {
       nomeDoUsuario,
+      email,
       cpf,
       senha
     };

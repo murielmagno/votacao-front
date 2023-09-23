@@ -6,10 +6,14 @@
         <mat-icon>home</mat-icon>
         Home
       </a>
-      <button mat-icon-button (click)="onLogout()">
+      <a mat-list-item routerLink="/relatorio" routerLinkActive="active-link">
+        <mat-icon>description</mat-icon>
+        Relatório
+      </a>
+      <a mat-list-item (click)="onLogout()">
         <mat-icon>exit_to_app</mat-icon>
         Sair
-      </button>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
