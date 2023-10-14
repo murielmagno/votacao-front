@@ -1,12 +1,41 @@
 <div>
   <h2>Pautas Existentes:</h2>
-  <ul>
-    <li *ngFor="let pauta of pautas">{{ pauta }}</li>
-  </ul>
+  <table aria-describedby="mydesc">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Descrição</th>
+      <th>Status</th>
+      <th>Data de Criação</th>
+      <th>Data de Atualização</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let pauta of pautas">
+      <td>{{ pauta.id }}</td>
+      <td>{{ pauta.descricao }}</td>
+      <td>{{ pauta.statusPauta }}</td>
+      <td>{{ pauta.dataCriacao }}</td>
+      <td>{{ pauta.dataAtualizacao }}</td>
+    </tr>
+    </tbody>
+  </table>
 
-  <h2>Criar Nova Pauta:</h2>
-  <label for="descricao">Descrição da Pauta:</label>
-  <input type="text" id="descricao" [(ngModel)]="descricao" />
+  <mat-paginator
+    [length]="totalElements"
+    [pageIndex]="pageNumber"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 25, 50, 100]"
+    (page)="onPageChange($event)"
+  ></mat-paginator>
 
-  <button (click)="adicionarPauta()">Adicionar</button>
+  <div>
+    <button (click)="toggleFormularioNovaPauta()">Nova Pauta</button>
+    <div *ngIf="mostrarFormularioNovaPauta">
+      <h2>Criar Nova Pauta:</h2>
+      <label for="descricao">Descrição da Pauta:</label>
+      <input type="text" id="descricao" [(ngModel)]="descricao" />
+      <button (click)="adicionarPauta(descricao)">Adicionar</button>
+    </div>
+  </div>
 </div>

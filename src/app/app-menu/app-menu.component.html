@@ -1,7 +1,7 @@
-<mat-sidenav-container class="home-container">
+<mat-sidenav-container class="menu-container">
   <mat-sidenav mode="side" opened>
     <mat-nav-list>
-      <h3 matSubheader>Menu</h3>
+      <h2 matSubheader >Menu</h2>
       <a mat-list-item routerLink="/home" routerLinkActive="active-link">
         <mat-icon>home</mat-icon>
         Home
@@ -22,7 +22,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="full-height">
-    <div class="main-content">
+    <div class="menu-content">
       <router-outlet></router-outlet> <!-- O conteúdo da rota será exibido aqui -->
     </div>
   </mat-sidenav-content>
@@ -32,7 +32,7 @@
     </button>
     <span>Vote aqui</span>
   </mat-toolbar>
-  <div class="main-content">
+  <div class="menu-content">
     <p>Bem-vindo, {{ username }}!</p>
   </div>
 </mat-sidenav-container>

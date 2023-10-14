@@ -1,34 +1,39 @@
-<mat-table [dataSource]="votationsPage.content">
+<div>
+  <h2>Votações Disponiveis:</h2>
 
-  <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-    <mat-cell *matCellDef="let votation">{{ votation.id }}</mat-cell>
-  </ng-container>
 
-  <ng-container matColumnDef="descricao">
-    <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
-    <mat-cell *matCellDef="let votation">{{ votation.pauta.descricao }}</mat-cell>
-  </ng-container>
+  <mat-table [dataSource]="votationsPage.content" class="custom-table">
 
-  <ng-container matColumnDef="inicioVotacao">
-    <mat-header-cell *matHeaderCellDef>Inicio Votação</mat-header-cell>
-    <mat-cell *matCellDef="let votation">{{ votation.inicioVotacao }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef class="custom-header-cell">ID</mat-header-cell>
+      <mat-cell *matCellDef="let votation" class="custom-cell custom-id">{{ votation.id }}</mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="fimVotacao">
-    <mat-header-cell *matHeaderCellDef>Fim Votação</mat-header-cell>
-    <mat-cell *matCellDef="let votation">{{ votation.fimVotacao }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="descricao">
+      <mat-header-cell *matHeaderCellDef class="custom-header-cell">Descrição</mat-header-cell>
+      <mat-cell *matCellDef="let votation" class="custom-cell custom-id">{{ votation.pauta.descricao }}</mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="statusVotacao">
-    <mat-header-cell *matHeaderCellDef>Status Votação</mat-header-cell>
-    <mat-cell *matCellDef="let votation">{{ votation.statusVotacao }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="inicioVotacao">
+      <mat-header-cell *matHeaderCellDef class="custom-header-cell">Inicio Votação</mat-header-cell>
+      <mat-cell *matCellDef="let votation" class="custom-cell custom-id">{{ votation.inicioVotacao }}</mat-cell>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row
-    *matRowDef="let votation; columns: displayedColumns"
-    (click)="onRowClick(votation.id)"
-    style="cursor: pointer"
-  ></mat-row>
-</mat-table>
+    <ng-container matColumnDef="fimVotacao">
+      <mat-header-cell *matHeaderCellDef class="custom-header-cell">Fim Votação</mat-header-cell>
+      <mat-cell *matCellDef="let votation" class="custom-cell custom-id">{{ votation.fimVotacao }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="statusVotacao">
+      <mat-header-cell *matHeaderCellDef class="custom-header-cell">Status Votação</mat-header-cell>
+      <mat-cell *matCellDef="let votation" class="custom-cell custom-id">{{ votation.statusVotacao }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      *matRowDef="let votation; columns: displayedColumns"
+      (click)="onRowClick(votation.id)"
+      style="cursor: pointer"
+    ></mat-row>
+  </mat-table>
+</div>

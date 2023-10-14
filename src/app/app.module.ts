@@ -25,6 +25,8 @@ import { VotationDetailComponent } from './votation-detail/votation-detail.compo
 import { PautaComponent } from './pauta/pauta.component';
 import { ReportComponent } from './report/report.component';
 import { AppMenuComponent } from './app-menu/app-menu.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { AppMenuComponent } from './app-menu/app-menu.component';
     FormsModule,
     MatDialogModule,
     MatSidenavModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
