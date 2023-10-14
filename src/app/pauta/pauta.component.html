@@ -1,0 +1,12 @@
+<div>
+  <h2>Pautas Existentes:</h2>
+  <ul>
+    <li *ngFor="let pauta of pautas">{{ pauta }}</li>
+  </ul>
+
+  <h2>Criar Nova Pauta:</h2>
+  <label for="descricao">Descrição da Pauta:</label>
+  <input type="text" id="descricao" [(ngModel)]="descricao" />
+
+  <button (click)="adicionarPauta()">Adicionar</button>
+</div>

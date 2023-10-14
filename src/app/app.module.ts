@@ -22,6 +22,9 @@ import {AuthGuard} from "./utils/AuthGuard";
 import { RegisterComponent } from './register/register.component';
 import {VotationsModule} from "./votations/votations.module";
 import { VotationDetailComponent } from './votation-detail/votation-detail.component';
+import { PautaComponent } from './pauta/pauta.component';
+import { ReportComponent } from './report/report.component';
+import { AppMenuComponent } from './app-menu/app-menu.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { VotationDetailComponent } from './votation-detail/votation-detail.compo
     ModalErrorComponent,
     RegisterComponent,
     VotationDetailComponent,
+    PautaComponent,
+    ReportComponent,
+    AppMenuComponent,
   ],
   imports: [
     BrowserModule,

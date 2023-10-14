@@ -1,0 +1,38 @@
+<mat-sidenav-container class="home-container">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <h3 matSubheader>Menu</h3>
+      <a mat-list-item routerLink="/home" routerLinkActive="active-link">
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+      <a mat-list-item routerLink="/pauta" routerLinkActive="active-link">
+        <mat-icon>class</mat-icon>
+        Pauta
+      </a>
+      <a mat-list-item routerLink="/relatorio" routerLinkActive="active-link">
+        <mat-icon>description</mat-icon>
+        Relatório
+      </a>
+      <a mat-list-item (click)="onLogout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Sair
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="full-height">
+    <div class="main-content">
+      <router-outlet></router-outlet> <!-- O conteúdo da rota será exibido aqui -->
+    </div>
+  </mat-sidenav-content>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Vote aqui</span>
+  </mat-toolbar>
+  <div class="main-content">
+    <p>Bem-vindo, {{ username }}!</p>
+  </div>
+</mat-sidenav-container>
