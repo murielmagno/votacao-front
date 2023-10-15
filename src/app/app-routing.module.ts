@@ -8,6 +8,7 @@ import {VotationDetailComponent} from "./votation-detail/votation-detail.compone
 import {PautaComponent} from "./pauta/pauta.component";
 import {AppMenuComponent} from "./app-menu/app-menu.component";
 import {ReportComponent} from "./report/report.component";
+import {StartVotationComponent} from "./start-votation/start-votation.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: 'votations/:id', component: VotationDetailComponent, canActivate: [AuthGuard]},
       {path: 'pauta', component: PautaComponent, canActivate: [AuthGuard]},
       {path: 'relatorio', component: ReportComponent, canActivate: [AuthGuard]},
+      {path: 'start', component: StartVotationComponent, canActivate: [AuthGuard]},
     ]
   }
 ];

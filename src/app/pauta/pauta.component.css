@@ -1,18 +1,22 @@
-.pauta-container{
+/* Estilos para o container da tabela */
+.pauta-container {
   padding: 10px;
 }
 
-table {
+/* Estilos para a tabela */
+.mat-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+/* Estilos para as células do cabeçalho e de dados */
+.mat-header-cell, .mat-cell {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-th {
+/* Estilos para as células do cabeçalho */
+.mat-header-cell {
   background-color: #f2f2f2;
 }
