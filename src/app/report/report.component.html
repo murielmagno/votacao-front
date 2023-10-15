@@ -1,1 +1,12 @@
-<p>report works!</p>
+<div>
+  <h2>Gerar relatório da votação:</h2>
+  <form [formGroup]="reportForm" (ngSubmit)="generateReport()" class="report-form">
+    <mat-form-field class="mat-distancia">
+      <mat-label>Selecione uma votação</mat-label>
+      <mat-select formControlName="votationId" >
+        <mat-option *ngFor="let votation of votations" [value]="votation.id">{{ votation.pauta.descricao }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Gerar Relatório</button>
+  </form>
+</div>

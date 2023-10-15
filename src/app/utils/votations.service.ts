@@ -15,11 +15,11 @@ export class VotationsService {
   constructor(private http: HttpClient) { }
 
   getVotations(): Observable<Page<Votation>> {
-    return this.http.get<Page<Votation>>(`${this.apiUrl}/votacao`);
+    return this.http.get<Page<Votation>>(`${this.apiUrl}/votacao/lista`);
   }
 
   getVotation(id: number): Observable<Votation> {
-    return this.http.get<Votation>(`${this.apiUrl}/votacao/${id}`);
+    return this.http.get<Votation>(`${this.apiUrl}/votacao/getVotacao/${id}`);
   }
 
   setVoto(votacao: number, cpf: string, voto: string): Observable<any> {

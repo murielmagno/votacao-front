@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {StartVotation} from "../utils/StartVotation";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {StartVotationService} from "../utils/start-votation.service";
-import { DateAdapter } from '@angular/material/core';
+import {DateAdapter} from '@angular/material/core';
 import {PautaService} from "../utils/pauta.service";
 import {Pauta} from "../utils/Pauta";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalErrorComponent} from "../modal-error/modal-error.component";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-start-votation',
@@ -13,17 +14,13 @@ import {Pauta} from "../utils/Pauta";
 })
 export class StartVotationComponent implements OnInit {
   pautas: Pauta[] = [];
-  inicioVotacao: StartVotation;
   votacaoForm: FormGroup;
 
-  constructor(private pautaService: PautaService, private inicioVotacaoService: StartVotationService, private fb: FormBuilder, private dateAdapter: DateAdapter<Date>) {
+  constructor(private formBuilder: FormBuilder, private pautaService: PautaService, private inicioVotacaoService: StartVotationService, private dateAdapter: DateAdapter<Date>, private dialog: MatDialog) {
     this.dateAdapter.setLocale('pt-BR');
-    this.inicioVotacao = { pautas: [], pautaSelecionada: null, dataEncerramento: null };
-    this.votacaoForm = this.fb.group({
-      pautaSelecionada: [null, Validators.required],
-      dataEncerramento: [null, Validators.required],
-      horaEncerramento: [null, Validators.required],
-      dataHoraEncerramento: [null, Validators.required],
+    this.votacaoForm = this.formBuilder.group({
+      idPauta: [null, Validators.required], // Você pode definir as regras de validação aqui, se necessário
+      fimVotacao: [null, Validators.required] // Aqui também
     });
   }
 
@@ -31,25 +28,32 @@ export class StartVotationComponent implements OnInit {
     this.loadPautas();
   }
 
-  iniciarVotacao() {
-    const dataControl = this.votacaoForm.get('dataEncerramento');
-    const horaControl = this.votacaoForm.get('horaEncerramento');
+  async iniciarVotacao() {
+    if (this.votacaoForm) {
+      const request = {
+        idPauta: this.votacaoForm.value.idPauta,
+        fimVotacao: this.votacaoForm.value.fimVotacao
+      }
+      try {
+        console.log('3333')
+        const response = await this.inicioVotacaoService.setVotacao(request).toPromise()
+        this.openErrorDialog(response.mensagem);
 
-    if (this.votacaoForm.valid && dataControl && horaControl) {
-      const data = dataControl.value;
-      const hora = horaControl.value;
-
-      const dataHoraEncerramento = new Date(`${data} ${hora}`);
-      this.votacaoForm.get('dataHoraEncerramento')?.setValue(dataHoraEncerramento);
-    } else {
-      // Lide com os casos em que algum controle ou o formulário não sejam válidos.
+      } catch (error) {
+        console.log('estranho');
+      }
     }
   }
-
 
   loadPautas() {
     this.pautaService.getPautas().subscribe((data) => {
       this.pautas = data.content;
+    });
+  }
+
+  openErrorDialog(errorMessage: string): void {
+    this.dialog.open(ModalErrorComponent, {
+      data: errorMessage,
     });
   }
 
