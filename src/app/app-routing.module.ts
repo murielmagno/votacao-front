@@ -10,6 +10,9 @@ import {AppMenuComponent} from "./app-menu/app-menu.component";
 import {ReportComponent} from "./report/report.component";
 
 const routes: Routes = [
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {
     path: '',
     component: AppMenuComponent,
@@ -19,10 +22,7 @@ const routes: Routes = [
       {path: 'pauta', component: PautaComponent, canActivate: [AuthGuard]},
       {path: 'relatorio', component: ReportComponent, canActivate: [AuthGuard]},
     ]
-  },
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  }
 ];
 
 @NgModule({

@@ -40,21 +40,19 @@ export class PautaComponent implements OnInit {
     this.loadPautas();
   }
 
-  adicionarPauta(descricao: string) {
-    if (descricao) {
+  async adicionarPauta(descricao: string): Promise<void> {
       try {
         console.log(descricao)
-        const response = this.pautaService.setPauta(descricao).toPromise()
-        if (response.body === 'Pauta criada com sucesso.') {
-          this.openErrorDialog(response);
-          this.router.navigate(['/pauta']).then(() => console.log('Reload'));
+        const response = await this.pautaService.setPauta(descricao).toPromise()
+        if (response.mensagem === 'Pauta criada com sucesso.') {
+          this.openErrorDialog(response.mensagem);
+          this.loadPautas();
         } else {
-          this.openErrorDialog(response);
+          this.openErrorDialog(response.mensagem);
         }
       } catch (error) {
         console.log('estranho');
       }
-    }
   }
 
   toggleFormularioNovaPauta() {
