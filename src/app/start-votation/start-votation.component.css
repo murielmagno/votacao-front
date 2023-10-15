@@ -1,0 +1,15 @@
+.mat-align-center {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  text-align: center;
+  gap: 10px; /* Espaço vertical entre os campos */
+  padding: 10px;
+}
+
+.mat-distancia {
+  padding: 10px;
+  gap: 10px;
+  max-width: 250px;
+}
+

@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./pauta.component.css']
 })
 export class PautaComponent implements OnInit {
+  displayPauta: string[] = ['id', 'descricao', 'statusPauta', 'dataCriacao', 'dataAtualizacao'];
   pautas: Pauta[] = [];
   pageNumber: number = 0;
   pageSize: number = 10;

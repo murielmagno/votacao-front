@@ -1,0 +1,23 @@
+<div>
+  <h2>Iniciar uma nova votação:</h2>
+</div>
+
+<form [formGroup]="votacaoForm" (submit)="iniciarVotacao()">
+  <mat-form-field class="mat-align-center">
+    <mat-label>Selecione uma pauta</mat-label>
+    <mat-select formControlName="pautaSelecionada">
+      <mat-option *ngFor="let pauta of pautas" [value]="pauta">{{ pauta.descricao }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="mat-distancia" >
+    <mat-label>Data de Encerramento</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dataEncerramento">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <input type="hidden" formControlName="dataHoraEncerramento">
+
+  <button mat-raised-button color="primary" type="submit">Iniciar Votação</button>
+</form>

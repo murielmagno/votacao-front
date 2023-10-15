@@ -1,41 +1,52 @@
 <div class="pauta-container">
   <h2>Pautas Existentes:</h2>
-  <table aria-describedby="mydesc">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Descrição</th>
-      <th>Status</th>
-      <th>Data de Criação</th>
-      <th>Data de Atualização</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let pauta of pautas">
-      <td>{{ pauta.id }}</td>
-      <td>{{ pauta.descricao }}</td>
-      <td>{{ pauta.statusPauta }}</td>
-      <td>{{ pauta.dataCriacao }}</td>
-      <td>{{ pauta.dataAtualizacao }}</td>
-    </tr>
-    </tbody>
-  </table>
+  <mat-table aria-describedby="mydesc" [dataSource]="pautas">
+    <!-- Colunas da tabela -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let pauta">{{ pauta.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descricao">
+      <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+      <mat-cell *matCellDef="let pauta">{{ pauta.descricao }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="statusPauta">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let pauta">{{ pauta.statusPauta }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dataCriacao">
+      <mat-header-cell *matHeaderCellDef>Data de Criação</mat-header-cell>
+      <mat-cell *matCellDef="let pauta">{{ pauta.dataCriacao }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dataAtualizacao">
+      <mat-header-cell *matHeaderCellDef>Data de Atualização</mat-header-cell>
+      <mat-cell *matCellDef="let pauta">{{ pauta.dataAtualizacao }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayPauta"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayPauta"></mat-row>
+  </mat-table>
 
   <mat-paginator
     [length]="totalElements"
-    [pageIndex]="pageNumber"
     [pageSize]="pageSize"
     [pageSizeOptions]="[10, 25, 50, 100]"
     (page)="onPageChange($event)"
   ></mat-paginator>
 
   <div>
-    <button (click)="toggleFormularioNovaPauta()">Nova Pauta</button>
+    <button mat-raised-button (click)="toggleFormularioNovaPauta()">Nova Pauta</button>
     <div *ngIf="mostrarFormularioNovaPauta">
       <h2>Criar Nova Pauta:</h2>
-      <label for="descricao">Descrição da Pauta:</label>
-      <input type="text" id="descricao" [(ngModel)]="descricao" />
-      <button (click)="adicionarPauta(descricao)">Adicionar</button>
+      <mat-form-field>
+        <mat-label>Descrição da Pauta</mat-label>
+        <input matInput [(ngModel)]="descricao" id="descricao" />
+      </mat-form-field>
+      <button mat-raised-button (click)="adicionarPauta(descricao)">Adicionar</button>
     </div>
   </div>
 </div>

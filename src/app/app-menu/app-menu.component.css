@@ -1,16 +1,14 @@
-/* Estilos para o container do menu */
 .menu-container {
   height: 100%; /* Tornar o container do menu ocupar toda a altura da tela */
+  padding: 10px;
 }
 
-/* Estilos para o cabeçalho do menu */
 .mat-subheader {
   color: #fff !important; /* Cor do texto */
   padding: 8px;
   font-size: 1.2em;
 }
 
-/* Estilos para os itens de menu */
 .mat-list-item a {
   color: #fff; /* Cor do texto dos itens do menu */
   text-decoration: none; /* Remover sublinhado dos links */
@@ -20,31 +18,30 @@
   background-color: #555; /* Cor de fundo ao passar o mouse sobre os itens */
 }
 
-/* Estilos para os ícones dos itens do menu */
 .mat-list-item mat-icon {
   color: #fff; /* Cor dos ícones */
   margin-right: 8px; /* Espaçamento entre o ícone e o texto */
 }
 
-/* Estilos para o botão de menu */
 .mat-toolbar {
   background-color: #1976D2; /* Cor de fundo da barra de ferramentas do menu */
 }
 
-/* Estilos para o título do menu */
 .mat-toolbar span {
   color: #fff !important; /* Cor do texto do título */
   font-size: 1.2em;
   margin-left: 16px; /* Espaçamento entre o ícone do menu e o título */
 }
 
-/* Estilos para o conteúdo principal */
 .full-height {
   height: 100%; /* Garantir que o conteúdo principal ocupe toda a altura disponível */
 }
 
-/* Estilos para o conteúdo principal */
 .main-content {
   padding: 16px;
   color: #333; /* Cor do texto no conteúdo principal */
+}
+
+.menu-titulo{
+  margin-left: 20px;
 }
