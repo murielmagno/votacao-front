@@ -1,0 +1,43 @@
+.votacao-container{
+  padding: 10px;
+}
+
+/* Estilo para a tabela */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo para as células de cabeçalho */
+.custom-header-cell {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Estilo para as células de dados */
+.custom-cell {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Estilo para as linhas alternadas (opcional) */
+.custom-row-even {
+  background-color: #f9f9f9;
+}
+
+/* Estilo para as linhas quando hover (destacar quando o mouse passa) */
+.custom-row:hover {
+  background-color: #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+/* Estilo para a célula de ID (exemplo: fonte colorida) */
+.custom-id {
+  color: #007bff; /* Cor azul */
+}

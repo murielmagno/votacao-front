@@ -1,7 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {AuthService} from "../utils/auth.service";
-import {Router} from "@angular/router";
-import {MatSidenav} from "@angular/material/sidenav";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +6,6 @@ import {MatSidenav} from "@angular/material/sidenav";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  username: string;
-  @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.username = authService.getUsername();
-  }
-
-  onLogout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
 
 }
