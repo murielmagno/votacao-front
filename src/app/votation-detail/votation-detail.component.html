@@ -4,10 +4,9 @@
   </mat-card-header>
   <mat-card-content>
     <p>ID da Votação: {{ votationId }}</p>
-    <!-- Exiba outros detalhes da votação aqui -->
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="vote('SIM')">Votar a Favor</button>
-    <button mat-raised-button color="warn" (click)="vote('NÃO')">Votar Contra</button>
+    <button mat-raised-button color="primary" (click)="vote('SIM')" class="voto-favor">Votar a Favor</button>
+    <button mat-raised-button color="warn" (click)="vote('NÃO')" class="voto-contra">Votar Contra</button>
   </mat-card-actions>
 </mat-card>

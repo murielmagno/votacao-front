@@ -14,7 +14,7 @@ export class PautaService {
   getPautas(): Observable<any> {
     const params = {
     };
-    return this.http.get<any>(`${this.apiUrl}/pauta`, { params });
+    return this.http.get<any>(`${this.apiUrl}/pauta/lista`, { params });
   }
 
   setPauta(descricao: string): Observable<any> {

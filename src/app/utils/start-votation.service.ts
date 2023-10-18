@@ -1,17 +1,25 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Pauta} from "./Pauta";
+import {catchError, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StartVotationService {
 
+  private apiUrl = 'http://localhost:8089';
+
   constructor(private http: HttpClient) {
   }
 
-  getPautas(): Observable<Pauta[]> {
-    return this.http.get<Pauta[]>('sua-api/pauta');
+  setVotacao(form: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/votacao/iniciar`, form).pipe(
+      tap(response => {
+
+      }),
+      catchError(error => {
+        return error.error;
+      })
+    );
   }
 }
