@@ -5,7 +5,6 @@ import {ModalErrorComponent} from '../modal-error/modal-error.component';
 import {Votation} from "../votations-list/votations-list.component";
 import {ReportService} from "../utils/report.service";
 import {VotationsService} from "../utils/votations.service";
-
 @Component({
   selector: 'app-generate-report',
   templateUrl: './report.component.html',
@@ -32,9 +31,7 @@ export class ReportComponent implements OnInit {
 
   getVotations(): void {
     this.votationsService.getVotations().subscribe(
-      (data: Page<Votation>) => {
-        this.votations = data.content;
-      },
+      (data: Page<Votation>) => this.votations = data.content,
       (error) => {
         console.log('Erro ao obter as votações:', error);
       }
